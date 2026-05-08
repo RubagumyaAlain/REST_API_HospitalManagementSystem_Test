@@ -8,7 +8,7 @@ return(
   <>
       <div>
         <BrowserRouter>
-          <nav className='flex justify-between items-center font-bold text-white bg-blue-500 p-2'>
+          <nav className='flex justify-between items-center gap-8 font-bold text-white bg-blue-500 p-2'>
             <h1>Nyarugenge Hospital</h1>
             <div className='flex items-center gap-8'>
                 <Link to='/doctors' className='hover:text-blue-100 text-white-600'> Doctors</Link>
