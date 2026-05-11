@@ -42,15 +42,15 @@ public class DoctorsController {
     public Doctors getDoctorById(@PathVariable Long id){
         return doctorRepo.findById(id)
         .orElseThrow(()-> new ResponseStatusException
-        (HttpStatus.NOT_FOUND, 
-        "DOCTOR NOT FOUND"));
+        (HttpStatus.NOT_FOUND, "DOCTOR NOT FOUND"));
     }
 
     @PutMapping("/doctors/{id}")
     public ResponseEntity<?> UpdateDoctor(@PathVariable Long id, @RequestBody Doctors doctorDetails){
         return doctorRepo.findById(id).map(doctor -> 
         {
-        doctor.setId(doctorDetails.getId());
+        // You were overwriting the existing entity ID from request body.
+        // In update-by-id, the path variable ID is the source of truth and should not be changed.
         doctor.setFullName(doctorDetails.getFullName());
         doctor.setSpecialization(doctorDetails.getSpecialization());
         doctor.setDepartment(doctorDetails.getDepartment());
